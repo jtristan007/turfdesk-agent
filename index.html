@@ -3,318 +3,498 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Turfdesk AI Agent — What It Does</title>
+<title>Turfdesk — Lawn Care Software That Runs Your Business</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f9fafb; color: #111; }
 
-  /* Hero */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #fff;
+    color: #111;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 100;
+  }
+  .logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: #16a34a;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: #111; }
+  .nav-cta {
+    background: #16a34a;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* HERO */
   .hero {
-    background: linear-gradient(135deg, #16a34a 0%, #15803d 50%, #166534 100%);
-    color: white;
     padding: 64px 24px 56px;
     text-align: center;
+    background: linear-gradient(180deg, #f0fdf4 0%, #fff 100%);
   }
-  .hero .badge {
+  .hero-badge {
     display: inline-block;
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.35);
+    background: #dcfce7;
+    color: #15803d;
     border-radius: 999px;
-    padding: 4px 14px;
+    padding: 5px 14px;
     font-size: 13px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
+    font-weight: 700;
     margin-bottom: 20px;
+    letter-spacing: 0.02em;
   }
-  .hero h1 { font-size: clamp(28px, 5vw, 48px); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 16px; }
-  .hero p { font-size: 18px; opacity: 0.88; max-width: 560px; margin: 0 auto 32px; line-height: 1.6; }
-  .hero .schedule-pill {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: rgba(255,255,255,0.15); border-radius: 999px;
-    padding: 10px 22px; font-size: 15px; font-weight: 600;
+  .hero h1 {
+    font-size: clamp(32px, 7vw, 56px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+    color: #0a0a0a;
   }
-  .hero .schedule-pill .dot { width: 8px; height: 8px; background: #86efac; border-radius: 50%; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+  .hero h1 em {
+    font-style: normal;
+    color: #16a34a;
+  }
+  .hero p {
+    font-size: clamp(16px, 3.5vw, 20px);
+    color: #555;
+    line-height: 1.65;
+    max-width: 520px;
+    margin: 0 auto 36px;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: #16a34a;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 32px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: 800;
+    width: 100%;
+    max-width: 320px;
+    text-align: center;
+  }
+  .btn-secondary {
+    display: inline-block;
+    color: #555;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+  }
 
-  /* Section */
-  .section { max-width: 900px; margin: 0 auto; padding: 56px 24px; }
-  .section-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #16a34a; margin-bottom: 10px; }
-  .section h2 { font-size: 28px; font-weight: 800; margin-bottom: 8px; }
-  .section > p { color: #555; line-height: 1.65; margin-bottom: 36px; }
+  /* SOCIAL PROOF */
+  .proof {
+    background: #fff;
+    padding: 24px;
+    text-align: center;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+    color: #888;
+    font-weight: 500;
+  }
+  .proof strong { color: #111; }
 
-  /* Job cards */
-  .jobs { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 8px; }
-  .job-card {
-    background: white;
+  /* FEATURES */
+  .features {
+    padding: 56px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .section-label {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #16a34a;
+    margin-bottom: 10px;
+  }
+  .features h2 {
+    text-align: center;
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 40px;
+    line-height: 1.2;
+  }
+  .feature-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .feature-card {
+    background: #f9fafb;
     border-radius: 16px;
-    padding: 28px;
-    box-shadow: 0 1px 4px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
-    border-top: 4px solid transparent;
+    padding: 24px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
   }
-  .job-card.green  { border-top-color: #16a34a; }
-  .job-card.blue   { border-top-color: #2563eb; }
-  .job-card.orange { border-top-color: #ea580c; }
-  .job-card .icon { font-size: 36px; margin-bottom: 16px; }
-  .job-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 6px; }
-  .job-card .sub { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: #888; margin-bottom: 12px; }
-  .job-card p { font-size: 14px; color: #555; line-height: 1.6; }
-  .job-card ul { padding-left: 18px; margin-top: 10px; }
-  .job-card li { font-size: 14px; color: #555; line-height: 1.7; }
-
-  /* Timeline */
-  .timeline { position: relative; padding-left: 32px; }
-  .timeline::before { content:''; position:absolute; left:10px; top:0; bottom:0; width:2px; background:#e5e7eb; }
-  .tl-item { position:relative; margin-bottom:28px; }
-  .tl-dot { position:absolute; left:-28px; top:4px; width:16px; height:16px; border-radius:50%; background:#16a34a; border:3px solid white; box-shadow:0 0 0 2px #16a34a; }
-  .tl-item h4 { font-size:15px; font-weight:700; margin-bottom:4px; }
-  .tl-item p { font-size:14px; color:#555; line-height:1.55; }
-
-  /* Email mockups */
-  .email-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-  .email-mock {
-    background:white; border-radius:12px; overflow:hidden;
-    box-shadow:0 1px 4px rgba(0,0,0,.07), 0 4px 16px rgba(0,0,0,.06);
+  .feature-icon {
+    font-size: 32px;
+    flex-shrink: 0;
+    line-height: 1;
   }
-  .email-mock .em-header { background:#f3f4f6; padding:14px 18px; border-bottom:1px solid #e5e7eb; }
-  .email-mock .em-header .em-label { font-size:11px; color:#888; text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px; }
-  .email-mock .em-header .em-subject { font-size:14px; font-weight:700; }
-  .email-mock .em-body { padding:18px; font-size:13.5px; color:#333; line-height:1.65; }
-  .email-mock table { width:100%; border-collapse:collapse; margin:10px 0; font-size:13px; }
-  .email-mock th { background:#f3f4f6; padding:6px 10px; text-align:left; font-weight:600; border:1px solid #e5e7eb; }
-  .email-mock td { padding:6px 10px; border:1px solid #e5e7eb; }
-  .email-mock .overdue { color:#dc2626; font-weight:600; }
-  .email-mock .cta { display:inline-block; background:#16a34a; color:white; text-decoration:none; border-radius:7px; padding:9px 18px; font-size:13px; font-weight:700; margin-top:12px; }
-  .em-tag { display:inline-block; font-size:11px; font-weight:700; border-radius:4px; padding:2px 7px; margin-right:6px; }
-  .tag-green  { background:#dcfce7; color:#15803d; }
-  .tag-blue   { background:#dbeafe; color:#1d4ed8; }
-  .tag-orange { background:#ffedd5; color:#c2410c; }
+  .feature-card h3 {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .feature-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+  }
 
-  /* Stats strip */
-  .stats-strip { background:white; border-radius:16px; padding:36px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:24px; box-shadow:0 1px 4px rgba(0,0,0,.06); }
-  .stat h3 { font-size:34px; font-weight:800; color:#16a34a; }
-  .stat p { font-size:13px; color:#666; margin-top:4px; line-height:1.4; }
+  /* AI SECTION */
+  .ai-section {
+    background: linear-gradient(135deg, #16a34a 0%, #15803d 60%, #166534 100%);
+    color: white;
+    padding: 56px 24px;
+    text-align: center;
+  }
+  .ai-section .section-label { color: #86efac; }
+  .ai-section h2 {
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .ai-section > p {
+    font-size: 16px;
+    opacity: 0.88;
+    max-width: 480px;
+    margin: 0 auto 36px;
+    line-height: 1.65;
+  }
+  .ai-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 36px;
+  }
+  .ai-pill {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .ai-card {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: left;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .ai-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.7;
+    margin-bottom: 8px;
+  }
+  .ai-card p { font-size: 14px; opacity: 0.9; line-height: 1.6; }
 
-  /* Footer */
-  .footer { background:#111827; color:#9ca3af; text-align:center; padding:32px 24px; font-size:14px; }
-  .footer strong { color:white; }
+  /* STATS */
+  .stats {
+    padding: 56px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: #f0f0f0;
+    max-width: 640px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  .stats-wrap {
+    padding: 40px 24px;
+    background: #fff;
+  }
+  .stats-wrap h2 {
+    text-align: center;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+  }
+  .stat-box {
+    background: #fff;
+    padding: 24px 16px;
+    text-align: center;
+  }
+  .stat-box h3 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #16a34a;
+    letter-spacing: -1px;
+  }
+  .stat-box p {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
 
-  /* Divider */
-  .divider { border:none; border-top:1px solid #e5e7eb; margin:0; }
+  /* HOW IT WORKS */
+  .how {
+    padding: 56px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .how h2 {
+    text-align: center;
+    font-size: clamp(24px, 5vw, 34px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 36px;
+    line-height: 1.2;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .step {
+    display: flex;
+    gap: 18px;
+    padding-bottom: 28px;
+    position: relative;
+  }
+  .step:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 19px;
+    top: 40px;
+    bottom: 0;
+    width: 2px;
+    background: #e5e7eb;
+  }
+  .step-num {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #16a34a;
+    color: white;
+    font-weight: 900;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+  .step h4 { font-size: 16px; font-weight: 800; margin-bottom: 4px; padding-top: 8px; }
+  .step p { font-size: 14px; color: #555; line-height: 1.6; }
 
-  @media (max-width: 600px) {
-    .hero { padding:48px 20px 40px; }
-    .section { padding:40px 20px; }
+  /* CTA SECTION */
+  .cta-section {
+    padding: 64px 24px;
+    text-align: center;
+    background: #f9fafb;
+  }
+  .cta-section h2 {
+    font-size: clamp(28px, 6vw, 42px);
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  .cta-section p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 32px;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: #111827;
+    color: #9ca3af;
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 14px;
+  }
+  footer strong { color: white; }
+  footer a { color: #6ee7b7; text-decoration: none; }
+
+  /* DESKTOP TWEAKS */
+  @media (min-width: 640px) {
+    .hero-actions { flex-direction: row; justify-content: center; }
+    .btn-primary { width: auto; }
+    .feature-list { gap: 16px; }
+    .stats { grid-template-columns: repeat(4, 1fr); }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
+<nav>
+  <div class="logo">Turf<span>desk</span></div>
+  <a href="mailto:info@turfdesk.com" class="nav-cta">Get Started</a>
+</nav>
+
 <!-- HERO -->
-<div class="hero">
-  <div class="badge">Turfdesk AI Agent</div>
-  <h1>Your business runs itself<br>while you're in the field</h1>
-  <p>An AI agent built into Turfdesk that handles invoice follow-ups, client onboarding, and daily health checks — automatically, every day.</p>
-  <div class="schedule-pill"><span class="dot"></span> Runs every morning at 7 AM</div>
+<section class="hero">
+  <div class="hero-badge">🌿 Built for lawn care pros</div>
+  <h1>Lawn care software<br>that <em>runs your business</em></h1>
+  <p>Invoicing, scheduling, client management, and AI-powered automation — all in one place. So you can stay in the field, not at the desk.</p>
+  <div class="hero-actions">
+    <a href="mailto:info@turfdesk.com" class="btn-primary">Get Started Free</a>
+    <a href="mailto:info@turfdesk.com" class="btn-secondary">Request a demo →</a>
+  </div>
+</section>
+
+<!-- PROOF -->
+<div class="proof">
+  Trusted by lawn care companies across the country · <strong>No credit card required</strong>
 </div>
 
-<!-- WHAT IT DOES -->
-<div class="section">
-  <div class="section-label">How it works</div>
-  <h2>Three jobs. Every day. Zero effort.</h2>
-  <p>Once set up, the agent connects directly to your Turfdesk account, checks what needs attention, and takes action — sending emails, onboarding new clients, and flagging anything that needs your eye.</p>
-
-  <div class="jobs">
-    <div class="job-card green">
-      <div class="icon">💸</div>
-      <div class="sub">Job 1</div>
-      <h3>Invoice Reminders</h3>
-      <p>Finds every overdue invoice across all your clients. Groups them by company and fires off a professional reminder email to each owner — so you get paid without having to chase anyone.</p>
-      <ul>
-        <li>Detects overdue invoices automatically</li>
-        <li>Groups by client, not per-invoice</li>
-        <li>Sends branded reminder email</li>
-      </ul>
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-label">Everything you need</div>
+  <h2>Run your whole operation from one app</h2>
+  <div class="feature-list">
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <div>
+        <h3>Invoicing & Payments</h3>
+        <p>Send professional invoices in seconds. Track what's paid, what's overdue, and get automatic reminders sent on your behalf.</p>
+      </div>
     </div>
-    <div class="job-card blue">
-      <div class="icon">🤝</div>
-      <div class="sub">Job 2</div>
-      <h3>New Client Onboarding</h3>
-      <p>When a new business signs up, the agent instantly sets up their service menu (lawn care + snow removal) and sends them a welcome email with their first three steps.</p>
-      <ul>
-        <li>Seeds 12+ default services (summer & winter)</li>
-        <li>Sends personalized welcome email</li>
-        <li>Marks account ready in seconds</li>
-      </ul>
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <div>
+        <h3>Scheduling & Jobs</h3>
+        <p>Schedule recurring jobs, one-offs, and seasonal services. Your crew always knows where to be and what to do.</p>
+      </div>
     </div>
-    <div class="job-card orange">
-      <div class="icon">📊</div>
-      <div class="sub">Job 3</div>
-      <h3>Daily Health Report</h3>
-      <p>Pulls a platform-wide snapshot and emails it to you: active companies, revenue at risk, critically overdue invoices, and invoices sent that day. Green or red — you know the moment you wake up.</p>
-      <ul>
-        <li>Active companies count</li>
-        <li>Revenue at risk (overdue total)</li>
-        <li>Flags invoices 30+ days overdue</li>
-      </ul>
+    <div class="feature-card">
+      <div class="feature-icon">👥</div>
+      <div>
+        <h3>Client Management</h3>
+        <p>Every customer's history, services, and contact info in one place. New clients are onboarded automatically the moment they sign up.</p>
+      </div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div>
+        <h3>Business Health Reports</h3>
+        <p>Get a daily email summary of active clients, revenue at risk, and outstanding invoices. Know the state of your business before you even start your truck.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<hr class="divider">
-
-<!-- TIMELINE -->
-<div class="section">
-  <div class="section-label">A typical morning</div>
-  <h2>What happens at 7 AM</h2>
-  <p>You're doing a site walk. The agent runs quietly in the background.</p>
-
-  <div class="timeline">
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <h4>7:00 AM — Agent wakes up</h4>
-      <p>Connects to your Turfdesk database and starts Job 1.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <h4>7:01 AM — Overdue invoices scanned</h4>
-      <p>Marks any invoices past their due date. Groups them by company. Sends reminder emails to owners who owe money.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <h4>7:02 AM — New signups checked</h4>
-      <p>Any business that joined in the last 24 hours gets their services seeded and a welcome email in their inbox.</p>
-    </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <h4>7:03 AM — Health report sent to you</h4>
-      <p>You get one email with the full picture: everything green, or a red flag if something needs your attention.</p>
-    </div>
-    <div class="tl-item" style="margin-bottom:0">
-      <div class="tl-dot"></div>
-      <h4>Done — back to your day</h4>
-      <p>No logins. No chasing. No manual emails. It just runs.</p>
-    </div>
+<!-- AI SECTION -->
+<section class="ai-section">
+  <div class="section-label">AI-Powered</div>
+  <h2>Your business runs while you're in the field</h2>
+  <p>Turfdesk's built-in AI agent handles the admin work automatically every morning at 7 AM — no setup, no babysitting.</p>
+  <div class="ai-pills">
+    <div class="ai-pill">💸 Invoice reminders sent automatically</div>
+    <div class="ai-pill">🤝 New clients onboarded instantly</div>
+    <div class="ai-pill">📊 Daily health report in your inbox</div>
   </div>
-</div>
-
-<hr class="divider">
-
-<!-- EMAIL MOCKUPS -->
-<div class="section">
-  <div class="section-label">Sample emails</div>
-  <h2>What your clients receive</h2>
-  <p>Every email is professional, branded, and personalized. Here's what they look like:</p>
-
-  <div class="email-grid">
-
-    <div class="email-mock">
-      <div class="em-header">
-        <div class="em-label"><span class="em-tag tag-green">Invoice Reminder</span> Sent to: client owner</div>
-        <div class="em-subject">[Turfdesk] 2 overdue invoice(s) need attention</div>
-      </div>
-      <div class="em-body">
-        <p>Hi Mike,</p>
-        <p style="margin-top:10px">You have <strong>2 overdue invoices</strong> in your Turfdesk account:</p>
-        <table>
-          <tr><th>Customer</th><th>Amount</th><th>Due</th></tr>
-          <tr><td>Johnson Property</td><td>$240.00</td><td class="overdue">Jun 15</td></tr>
-          <tr><td>Maple Creek HOA</td><td>$875.00</td><td class="overdue">Jun 22</td></tr>
-        </table>
-        <a href="#" class="cta">View in Turfdesk</a>
-        <p style="margin-top:14px;color:#888;font-size:12px">— The Turfdesk Team</p>
-      </div>
-    </div>
-
-    <div class="email-mock">
-      <div class="em-header">
-        <div class="em-label"><span class="em-tag tag-blue">Welcome Email</span> Sent to: new signup</div>
-        <div class="em-subject">Welcome to Turfdesk — here's how to get started</div>
-      </div>
-      <div class="em-body">
-        <p>Hi Sarah, welcome to Turfdesk!</p>
-        <p style="margin-top:10px">Your account for <strong>Green Valley Lawn Co.</strong> is ready. We've pre-loaded your service menu with lawn care and snow removal services.</p>
-        <p style="margin-top:10px"><strong>Your first 3 steps:</strong></p>
-        <ol style="padding-left:18px;margin-top:6px">
-          <li style="margin-bottom:4px">Add your first customer</li>
-          <li style="margin-bottom:4px">Create your first invoice</li>
-          <li>Set up your schedule</li>
-        </ol>
-        <p style="margin-top:14px;color:#888;font-size:12px">— The Turfdesk Team</p>
-      </div>
-    </div>
-
-    <div class="email-mock">
-      <div class="em-header">
-        <div class="em-label"><span class="em-tag tag-orange">Health Report</span> Sent to: you (operator)</div>
-        <div class="em-subject">🟢 Turfdesk Daily Report — July 6, 2026</div>
-      </div>
-      <div class="em-body">
-        <p style="margin-bottom:12px"><strong>🟢 Turfdesk Daily Health Report</strong></p>
-        <table>
-          <tr><td>Active companies</td><td><strong>47</strong></td></tr>
-          <tr><td>Overdue invoices</td><td><strong>3</strong></td></tr>
-          <tr><td>Revenue at risk</td><td><strong>$1,840.00</strong></td></tr>
-          <tr><td style="color:#dc2626">Critical (&gt;30d overdue)</td><td style="color:#dc2626"><strong>0</strong></td></tr>
-          <tr><td>Invoices sent today</td><td><strong>12</strong></td></tr>
-        </table>
-      </div>
-    </div>
-
+  <div class="ai-card">
+    <div class="ai-card-label">This morning at 7:03 AM</div>
+    <p>✅ 3 overdue invoice reminders sent<br>✅ 1 new client onboarded & welcomed<br>✅ Daily report delivered to your inbox<br><br>Revenue at risk: <strong>$1,840</strong> · Active clients: <strong>47</strong></p>
   </div>
-</div>
-
-<hr class="divider">
+</section>
 
 <!-- STATS -->
-<div class="section">
-  <div class="section-label">Built for scale</div>
-  <h2>Works across your entire platform</h2>
-  <p style="margin-bottom:28px">The agent doesn't just work for one company — it sweeps every client account at once.</p>
-  <div class="stats-strip">
-    <div class="stat"><h3>All</h3><p>companies checked every single morning, automatically</p></div>
-    <div class="stat"><h3>12+</h3><p>services seeded for every new signup (lawn + snow)</p></div>
-    <div class="stat"><h3>3</h3><p>jobs completed in under 5 minutes, start to finish</p></div>
-    <div class="stat"><h3>0</h3><p>manual steps required from you once it's running</p></div>
+<div class="stats-wrap">
+  <h2>Built to scale with you</h2>
+  <div class="stats">
+    <div class="stat-box"><h3>7AM</h3><p>AI agent runs every morning</p></div>
+    <div class="stat-box"><h3>0</h3><p>manual steps once it's running</p></div>
+    <div class="stat-box"><h3>12+</h3><p>services ready for new clients</p></div>
+    <div class="stat-box"><h3>All</h3><p>clients covered every day</p></div>
   </div>
 </div>
 
-<hr class="divider">
-
-<!-- HOW TO GET IT -->
-<div class="section">
+<!-- HOW IT WORKS -->
+<section class="how">
   <div class="section-label">Getting started</div>
-  <h2>What you need to run it</h2>
-  <p>The agent is a Python script that connects to your existing Turfdesk Supabase database. Setup takes about 20 minutes.</p>
-
-  <div class="timeline" style="margin-top:8px">
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <h4>1. Get your API keys</h4>
-      <p>You need an Anthropic API key (from console.anthropic.com) and your Supabase service role key.</p>
+  <h2>Up and running in under 30 minutes</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h4>Create your account</h4>
+        <p>Sign up and we'll set up your business profile, service menu, and billing in minutes.</p>
+      </div>
     </div>
-    <div class="tl-item">
-      <div class="tl-dot"></div>
-      <h4>2. Set up email sending</h4>
-      <p>Point the agent at any SMTP server — Gmail, Postmark, SendGrid, or your existing email provider.</p>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h4>Add your clients</h4>
+        <p>Import existing customers or add them manually. Turfdesk tracks their services, invoices, and history automatically.</p>
+      </div>
     </div>
-    <div class="tl-item">
-      <div class="tl-dot" style="background:#2563eb;box-shadow:0 0 0 2px #2563eb"></div>
-      <h4>3. Schedule it (optional but recommended)</h4>
-      <p>Add one line to cron (<code style="background:#f3f4f6;padding:2px 6px;border-radius:4px;font-size:13px">0 7 * * * python turfdesk_agent.py</code>) and it runs every morning at 7 AM.</p>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h4>Turn on the AI agent</h4>
+        <p>Enable the daily automation and let Turfdesk handle invoice reminders, onboarding, and reporting — every single day.</p>
+      </div>
     </div>
-    <div class="tl-item" style="margin-bottom:0">
-      <div class="tl-dot"></div>
-      <h4>4. That's it</h4>
-      <p>The agent connects, runs all three jobs, and sends you the daily report. Nothing else to do.</p>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div>
+        <h4>Stay in the field</h4>
+        <p>Your business runs itself. You focus on the work.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to get your<br>time back?</h2>
+  <p>Join lawn care pros who've stopped drowning in admin work.</p>
+  <a href="mailto:info@turfdesk.com" class="btn-primary" style="display:inline-block;max-width:320px;width:100%">Get Started Free →</a>
+</section>
 
 <!-- FOOTER -->
-<div class="footer">
-  <p><strong>Turfdesk Agent</strong> — built with the Anthropic Claude API</p>
-  <p style="margin-top:8px">Source code: <a href="https://gist.github.com/jtristan007/7371462266819fee3cda355a873cb9e6" style="color:#6ee7b7">gist.github.com/jtristan007/7371462266819fee3cda355a873cb9e6</a></p>
-</div>
+<footer>
+  <p><strong>Turfdesk</strong> — Lawn care software that runs your business</p>
+  <p style="margin-top:8px">Questions? <a href="mailto:info@turfdesk.com">info@turfdesk.com</a></p>
+</footer>
 
 </body>
 </html>
